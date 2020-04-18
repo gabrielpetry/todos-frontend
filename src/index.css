@@ -1,13 +1,39 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0 auto;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-size: 2em;
+  width: 80%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input, textarea, button, p, div, section, article, select {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  margin: 0.5em;
+}
+
+input {
+  border-radius: 4px;
+}
+
+input[type=checkbox] {
+  transform: scale(3);
+}
+
+ul {
+}
+
+.done {
+  text-decoration: line-through;
 }
