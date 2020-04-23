@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-
+import TodoList from './components/TodoList'
 export default () => {
   // hooks!!
   const [newTodo, setnewTodo] = useState('');
@@ -79,34 +79,7 @@ export default () => {
 
   return (
     <div className="App">
-      <form onSubmit={formSubmmited}>
-        <label htmlFor="name">Enter your name</label>
-        <input
-          id="newTodo"
-          name="newTodo"
-          value={ newTodo }
-          onChange={onNewTodoChange}
-        />
-        <button>Add Todo</button>
-      </form>
-      <button onClick={markAllDone}>Mark all as done</button>
-      <button onClick={removeDone}>Remove dones</button>
-      <h1>Todos</h1>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={todo.id} className={todo.done ? 'done' : ''}>
-            <input
-              type="checkbox"
-              checked={todo.done}
-              onChange={toggleTodoDone(todo, index)}
-            />
-            <button
-              onClick={removeTodo(todo)}
-            >Remove</button>
-            { todo.content }
-          </li>
-        ))}
-      </ul>
+      <TodoList></TodoList>
     </div>
   );
 }

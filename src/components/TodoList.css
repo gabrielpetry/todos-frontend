@@ -1,0 +1,38 @@
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+
+.book {
+  padding: 5px 10px;
+  margin: 1px;
+  text-transform: uppercase;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  font-weight: 300;
+  cursor: pointer;
+}
+.book {
+  font-size: 14px;
+}
+.active {
+  background-color: #66bb6a;
+  color: #fff;
+}
+
+h1, .header {
+  margin-top: 0;
+  margin-bottom: 1px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.header button {
+  border-radius: 10px;
+  background-color: #66bb6a;
+  color: #fff;
+  width: 70px;
+}

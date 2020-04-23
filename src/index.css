@@ -10,30 +10,3 @@ body {
   font-size: 2em;
   width: 80%;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-input, textarea, button, p, div, section, article, select {
-  display: block;
-  width: 100%;
-  font-size: 1em;
-  margin: 0.5em;
-}
-
-input {
-  border-radius: 4px;
-}
-
-input[type=checkbox] {
-  transform: scale(3);
-}
-
-ul {
-}
-
-.done {
-  text-decoration: line-through;
-}

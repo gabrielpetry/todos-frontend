@@ -1,0 +1,33 @@
+
+.task-list li {
+  margin-bottom: 1em;
+  border-top: 2px solid #e2e2e2;
+  padding-top: .5em;
+}
+
+.form-inline {
+  display: inline-block;
+}
+
+.form-inline label {
+  padding-left: .5em;
+}
+
+.round-checkbox {
+  width: 28px;
+  height: 28px;
+  background-color: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 50%;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.round-checkbox:checked {
+  background-color: #66bb6a;
+}
+.completed .form-inline label {
+  text-decoration: line-through;
+}
