@@ -3,7 +3,6 @@ ul {
   padding-left: 0px;
 }
 
-
 .book {
   padding: 5px 10px;
   margin: 1px;
@@ -21,7 +20,8 @@ ul {
   color: #fff;
 }
 
-h1, .header {
+h1,
+.header {
   margin-top: 0;
   margin-bottom: 1px;
 }
@@ -35,4 +35,16 @@ h1, .header {
   background-color: #66bb6a;
   color: #fff;
   width: 70px;
+}
+
+.add-task {
+  position: fixed;
+  bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 20px;
+  background-color: red;
 }
