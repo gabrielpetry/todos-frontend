@@ -108,7 +108,11 @@ export default function TodoList() {
 
       {books.length &&
         books.map((book) => (
-          <span onClick={() => setBook(book)} class="book active">
+          <span
+            key={book._id}
+            onClick={() => setBook(book)}
+            class="book active"
+          >
             {book.name}
           </span>
         ))}
