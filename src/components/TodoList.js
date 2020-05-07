@@ -89,10 +89,10 @@ export default function TodoList() {
   );
 
   const removeTask = useCallback(
-    (id) => (event) => {
-      api.delete(`/${id}`).then((res) => {
+    (book_id, task_id) => (event) => {
+      api.delete(`/api/books/${book_id}/tasks/${task_id}`).then((res) => {
         if (res.status === 200) {
-          const newTodos = bookTasks.filter((t) => t._id !== id);
+          const newTodos = bookTasks.filter((t) => t._id !== task_id);
           setBookTasks(newTodos);
         }
       });
@@ -132,7 +132,7 @@ export default function TodoList() {
                 />
                 <label>{task.description}</label>
               </div>
-              <button onClick={removeTask(task._id)}>delete</button>
+              <button onClick={removeTask(book._id, task._id)}>delete</button>
             </li>
           ))}
         <li>
