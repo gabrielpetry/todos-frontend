@@ -22,6 +22,9 @@ export default {
   async deleteTask(book_id, task_id) {
     return api.delete(`/books/${book_id}/tasks/${task_id}`);
   },
+  async deleteBook(book_id) {
+    return api.delete(`books/${book_id}`);
+  },
   async getBookTasks(book_id) {
     return api.get(`/books/${book_id}/tasks`);
   },

@@ -4,11 +4,12 @@
   padding-top: 0.5em;
 }
 
-.form-inline {
-  display: inline-block;
+.task-inline {
+  display: flex;
+  justify-content: space-between;
 }
 
-.form-inline label {
+.task-inline label {
   padding-left: 0.5em;
 }
 
@@ -28,6 +29,6 @@
   background-color: var(--primary-color);
   border: 0;
 }
-.completed .form-inline label {
+.completed .task-inline label {
   text-decoration: line-through;
 }

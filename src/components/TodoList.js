@@ -3,7 +3,7 @@ import "./TodoList.css";
 import "./parts/listItem.css";
 import api from "../services/todoApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function TodoList() {
   const [book, setBook] = useState({});
@@ -83,26 +83,47 @@ export default function TodoList() {
     [bookTasks]
   );
 
+  const removeBook = useCallback(
+    (book_id) => (event) => {
+      api.deleteBook(book_id).then((res) => {
+        if (res.status !== 204) return;
+        const newBooks = books.filter((t) => t._id !== book_id);
+        setBooks(newBooks);
+        setBook(books[0]);
+      });
+    },
+    [books]
+  );
+
   return (
     <div>
       <div className="header">
         <h1>{book.name}</h1>
+        <div className="actions">
+          <FontAwesomeIcon
+            onClick={removeBook(book._id)}
+            className="remove-book"
+            icon={faTimesCircle}
+          />
+        </div>
       </div>
 
-      {books.length &&
-        books.map((b) => (
-          <span
-            key={b._id}
-            onClick={() => setBook(b)}
-            className={b._id === book._id ? "book active" : "book"}
-          >
-            {b.name}
-          </span>
-        ))}
+      <div className="books-list">
+        {books.length &&
+          books.map((b) => (
+            <span
+              key={b._id}
+              onClick={() => setBook(b)}
+              className={b._id === book._id ? "book active" : "book"}
+            >
+              {b.name}
+            </span>
+          ))}
 
-      <button onClick={addBook} className="book">
-        <FontAwesomeIcon icon={faPlus} />
-      </button>
+        <span className="add-book">
+          <FontAwesomeIcon onClick={addBook} icon={faPlusCircle} />
+        </span>
+      </div>
 
       <ul className="task-list">
         {bookTasks.length &&
@@ -111,23 +132,33 @@ export default function TodoList() {
               key={task._id}
               className={task.completed ? "completed" : "notCompleted"}
             >
-              <div className="form-inline">
-                <input
-                  className="round-checkbox"
-                  checked={task.completed}
-                  type="checkbox"
-                  id="checkbox"
-                  onChange={toggleTask(task)}
+              <div className="task-inline">
+                <div className="task-info">
+                  <input
+                    className="round-checkbox"
+                    checked={task.completed}
+                    type="checkbox"
+                    id="checkbox"
+                    onChange={toggleTask(task)}
+                  />
+                  <label>{task.description}</label>
+                </div>
+                <FontAwesomeIcon
+                  onClick={removeTask(book._id, task._id)}
+                  className="remove-book"
+                  icon={faTimesCircle}
                 />
-                <label>{task.description}</label>
               </div>
-              <button onClick={removeTask(book._id, task._id)}>delete</button>
+
+              {/* <button o>delete</button> */}
             </li>
           ))}
         <li>
-          <button className="add-task" onClick={addTask}>
-            +
-          </button>
+          <FontAwesomeIcon
+            className="add-task"
+            onClick={addTask}
+            icon={faPlusCircle}
+          />
         </li>
       </ul>
     </div>

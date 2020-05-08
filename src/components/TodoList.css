@@ -37,12 +37,6 @@ h1,
   display: flex;
   justify-content: space-between;
 }
-.header button {
-  border-radius: 10px;
-  background-color: #66bb6a;
-  color: #fff;
-  width: 70px;
-}
 
 .add-task {
   position: fixed;
@@ -53,5 +47,23 @@ h1,
   right: 0;
   text-align: center;
   padding: 20px;
-  background-color: red;
+}
+
+.books-list {
+  display: flex;
+  align-items: center;
+}
+
+.books-list > span {
+  margin-right: 5px;
+}
+
+.add-book {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.remove-book {
+  color: #e2e2e2;
+  font-size: 23px;
 }
