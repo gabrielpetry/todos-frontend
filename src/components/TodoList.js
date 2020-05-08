@@ -149,8 +149,6 @@ export default function TodoList() {
                   icon={faTimesCircle}
                 />
               </div>
-
-              {/* <button o>delete</button> */}
             </li>
           ))}
         <li>
