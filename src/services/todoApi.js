@@ -4,6 +4,9 @@ const endpoint = "http://localhost:3000/api/";
 
 const api = axios.create({
   baseURL: endpoint,
+  headers: {
+    authorization: "Bearer " + localStorage.getItem("token"),
+  },
 });
 
 export default {
@@ -30,5 +33,8 @@ export default {
   },
   async getBooks() {
     return api.get("/books");
+  },
+  async getToken(username, password) {
+    return api.post("/users/auth", { username, password });
   },
 };
