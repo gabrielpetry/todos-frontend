@@ -13,8 +13,10 @@ export default function TodoList() {
   const loadBooks = async () => {
     const response = await api.getBooks();
     const books = response.data.books;
-    setBooks(books);
-    return books;
+    if (books) {
+      setBooks(books);
+      return books;
+    }
   };
 
   const loadBookTasks = async (book) => {
@@ -25,7 +27,9 @@ export default function TodoList() {
 
   useEffect(() => {
     loadBooks().then((b) => {
-      setBook(b[0]);
+      if (b[0]) {
+        setBook(b[0]);
+      }
     });
   }, []);
 

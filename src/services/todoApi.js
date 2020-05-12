@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const endpoint = "http://localhost:3000/api/";
+// const endpoint = "http://localhost:3000/api/";
+const endpoint = "http://aws01.gabrielpetry.com.br:3002/api/";
 
 const api = axios.create({
   baseURL: endpoint,
