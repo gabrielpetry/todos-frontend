@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import TodoList from "./components/TodoList";
 import api from "./services/todoApi";
 
@@ -16,8 +16,14 @@ export default () => {
 
     userToken();
   }, []);
+
+  const logout = useCallback(() => {
+    localStorage.clear("token");
+  });
+
   return (
     <div className="App">
+      <button onClick={logout}>logout</button>
       <TodoList></TodoList>
     </div>
   );
