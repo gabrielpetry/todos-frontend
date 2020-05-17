@@ -13,6 +13,7 @@ export default function TodoList() {
   const loadBooks = async () => {
     const response = await api.getBooks();
     const books = response.data.books;
+    console.log(books);
     if (books) {
       setBooks(books);
       return books;
@@ -40,7 +41,7 @@ export default function TodoList() {
   const toggleTask = useCallback(
     (task) => (event) => {
       api.updateOne(book.id, task).then((res) => {
-        if (res.status !== 200) return;
+        if (res.status !== 204) return;
         // if update succeses locally update the list
         const newTodos = bookTasks.map((t) => {
           if (t.id === task.id) {
@@ -75,10 +76,10 @@ export default function TodoList() {
   );
 
   const removeTask = useCallback(
-    (bookid, taskid) => (event) => {
-      api.deleteTask(bookid, taskid).then((res) => {
-        if (res.status !== 200) return;
-        const newTodos = bookTasks.filter((t) => t.id !== taskid);
+    (book_id, task_id) => (event) => {
+      api.deleteTask(book_id, task_id).then((res) => {
+        if (res.status !== 204) return;
+        const newTodos = bookTasks.filter((t) => t.id !== task_id);
         setBookTasks(newTodos);
       });
     },
@@ -86,10 +87,10 @@ export default function TodoList() {
   );
 
   const removeBook = useCallback(
-    (bookid) => (event) => {
-      api.deleteBook(bookid).then((res) => {
+    (book_id) => (event) => {
+      api.deleteBook(book_id).then((res) => {
         if (res.status !== 204) return;
-        const newBooks = books.filter((t) => t.id !== bookid);
+        const newBooks = books.filter((t) => t.id !== book_id);
         setBooks(newBooks);
         setBook(books[0]);
       });
