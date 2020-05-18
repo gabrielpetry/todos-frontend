@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const endpoint = "http://localhost:3000/api/";
-const endpoint = "http://aws01.gabrielpetry.com.br:3002/api/";
+const endpoint =
+  process.env.REACT_APP_API_ENDPOINT || "http://localhost:9000/api";
 
 const api = axios.create({
   baseURL: endpoint,
@@ -12,7 +12,7 @@ const api = axios.create({
 
 export default {
   async updateOne(book_id, task) {
-    return api.put(`/books/${book_id}/tasks/${task._id}`, {
+    return api.put(`/books/${book_id}/tasks/${task.id}`, {
       description: task.description,
       completed: !task.completed,
     });
