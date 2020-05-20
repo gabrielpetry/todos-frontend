@@ -4,6 +4,7 @@ import "./parts/listItem.css";
 import api from "../services/todoApi";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import io from "socket.io-client";
 
 export default function TodoList() {
   const [book, setBook] = useState({});
@@ -19,6 +20,20 @@ export default function TodoList() {
       return books;
     }
   };
+
+  useEffect(() => {
+    const socket = io("http://localhost:9000", {
+      query: {
+        userToken: localStorage.getItem("token"),
+      },
+    });
+
+    socket.on("message", (msg) => {
+      console.log(msg);
+    });
+
+    setInterval(() => socket.send("message", 1), 1000);
+  }, []);
 
   const loadBookTasks = async (book) => {
     if (!book.id) return;
