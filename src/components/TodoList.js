@@ -28,12 +28,10 @@ export default function TodoList() {
       },
     });
 
-    socket.on("message", (msg) => {
-      console.log(msg);
+    socket.on("newTask", (msg) => {
+      loadBookTasks(book);
     });
-
-    setInterval(() => socket.send("message", 1), 1000);
-  }, []);
+  }, [book]);
 
   const loadBookTasks = async (book) => {
     if (!book.id) return;
