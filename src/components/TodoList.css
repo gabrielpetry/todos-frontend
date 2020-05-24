@@ -50,17 +50,22 @@ h1,
 }
 
 .books-list {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  overflow: auto;
+  white-space: nowrap;
+  width: 100%;
 }
 
-.books-list > span {
+.books-list > .books > span {
   margin-right: 5px;
+  width: 100%;
 }
 
 .add-book {
   font-size: 28px;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
 .remove-book {
